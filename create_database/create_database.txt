@@ -1,0 +1,41 @@
+CREATE DATABASE cosmetic;
+
+CREATE TABLE brand
+( brand_id SERIAL ,
+  name_brand VARCHAR(256),
+  PRIMARY KEY (brand_id)
+);
+
+CREATE TABLE label
+( label_id SERIAL ,
+  name_label VARCHAR(256),
+  PRIMARY KEY (label_id)
+);
+
+CREATE TABLE brand
+( product_id SERIAL ,
+  name_product VARCHAR(256),
+  price INT,
+  rank_prod DECIMAL(1,1),
+  combination_property BOOLEAN,
+  dry_property BOOLEAN,
+  normal_property BOOLEAN,
+  oily_property BOOLEAN,
+  sensitive_property BOOLEAN,
+  PRIMARY KEY (product_id)
+);
+
+CREATE TABLE ingredient
+( ingredient_id SERIAL ,
+  name_ingredient VARCHAR(256),
+  PRIMARY KEY (ingredient_id)
+);
+
+CREATE TABLE product_ingredient
+( pi_id SERIAL ,
+  product_id INT,
+  ingredient_id INT,
+  PRIMARY KEY (pi_id)
+  FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE,
+  FOREIGN KEY (ingredient_id) REFERENCES ingredient(ingredient_id) ON DELETE CASCADE
+);
