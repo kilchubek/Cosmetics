@@ -2,32 +2,36 @@ CREATE DATABASE cosmetic;
 
 CREATE TABLE brand
 ( brand_id SERIAL ,
-  name_brand VARCHAR(256),
+  name_brand VARCHAR(255),
   PRIMARY KEY (brand_id)
 );
 
 CREATE TABLE label
 ( label_id SERIAL ,
-  name_label VARCHAR(256),
+  name_label VARCHAR(255),
   PRIMARY KEY (label_id)
 );
 
 CREATE TABLE brand
 ( product_id SERIAL ,
-  name_product VARCHAR(256),
+  name_product VARCHAR(255),
   price INT,
-  rank_prod DECIMAL(1,1),
-  combination_property BOOLEAN,
-  dry_property BOOLEAN,
-  normal_property BOOLEAN,
-  oily_property BOOLEAN,
-  sensitive_property BOOLEAN,
-  PRIMARY KEY (product_id)
+  rank_prod DECIMAL(2,1),
+  combination_property INT,
+  dry_property INT,
+  normal_property INT,
+  oily_property INT,
+  sensitive_property INT,
+  label INT,
+  brand INT,
+  PRIMARY KEY (product_id),
+  FOREIGN KEY (label) REFERENCES label(label_id) ON DELETE CASCADE,
+  FOREIGN KEY (brand) REFERENCES brand(brand_id) ON DELETE CASCADE
 );
 
 CREATE TABLE ingredient
 ( ingredient_id SERIAL ,
-  name_ingredient VARCHAR(256),
+  name_ingredient VARCHAR(255),
   PRIMARY KEY (ingredient_id)
 );
 
