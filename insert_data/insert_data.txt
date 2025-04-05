@@ -1,0 +1,5 @@
+INSERT INTO label(name_label) 
+SELECT DISTINCT "Label" FROM product_python;
+
+INSERT INTO brand (name_brand) 
+SELECT DISTINCT "Brand" FROM product_python;
