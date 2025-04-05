@@ -12,7 +12,7 @@ CREATE TABLE label
   PRIMARY KEY (label_id)
 );
 
-CREATE TABLE brand
+CREATE TABLE product
 ( product_id SERIAL ,
   name_product VARCHAR(255),
   price INT,
@@ -39,7 +39,7 @@ CREATE TABLE product_ingredient
 ( pi_id SERIAL ,
   product_id INT,
   ingredient_id INT,
-  PRIMARY KEY (pi_id)
+  PRIMARY KEY (pi_id),
   FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE,
   FOREIGN KEY (ingredient_id) REFERENCES ingredient(ingredient_id) ON DELETE CASCADE
 );
