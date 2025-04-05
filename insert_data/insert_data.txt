@@ -3,3 +3,18 @@ SELECT DISTINCT "Label" FROM product_python;
 
 INSERT INTO brand (name_brand) 
 SELECT DISTINCT "Brand" FROM product_python;
+
+INSERT INTO product(name_product, price, rank_prod,combination_property, dry_property, normal_property, oily_property, sensitive_property, label, brand) 
+SELECT "Name",
+       "Price",
+       "Rank",
+       "Combination",
+       "Dry", 
+       "Normal",
+       "Oily", 
+       "Sensitive",
+       label_id,
+       brand_id 
+FROM(product_python as pp 
+INNER JOIN label ON pp."Label" = label.name_label
+INNER JOIN brand ON pp."Brand" = brand.name_brand);
